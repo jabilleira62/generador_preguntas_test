@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Configuración inicial</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": {
+                            DEFAULT: "#0057ff",
+                            'light': '#e6f0ff'
+                        },
+                        "secondary": {
+                            DEFAULT: "#ffc700",
+                            'light': '#fff8e1'
+                        },
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "success": "#10B981",
+                        "error": "#EF4444",
+                        "info": "#3B82F6",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'subtle': '0 4px 12px 0 rgba(0, 0, 0, 0.04)',
+                        'subtle-dark': '0 4px 12px 0 rgba(0, 0, 0, 0.1)',
+                        'button-primary': '0 4px 14px 0 rgba(0, 87, 255, 0.3)',
+                        'input-focus': '0 0 0 3px #0057ff30, 0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                        'input-subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="font-display bg-gradient-to-br from-secondary-light via-white to-primary-light dark:bg-gradient-to-br dark:from-background-dark dark:to-[#101422]">
+    <div class="relative flex min-h-screen w-full group/design-root overflow-x-hidden">
+        <div class="flex flex-row w-full">
+            <main class="flex-1 p-4 sm:p-6 lg:p-8">
+                <div class="max-w-4xl mx-auto flex flex-col gap-8">
+                    <header class="flex items-center justify-between">
+                        <h1
+                            class="text-[#111418] dark:text-white/90 text-4xl font-black leading-tight tracking-[-0.033em]">
+                            Configuración inicial</h1>
+                    </header>
+                    <div class="flex flex-col gap-8">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                            <div class="lg:col-span-2 flex flex-col gap-6">
+                                <section
+                                    class="bg-white dark:bg-[#18232e] border border-gray-200/50 dark:border-white/10 rounded-xl p-6 shadow-subtle dark:shadow-none">
+                                    <h2
+                                        class="text-[#111418] dark:text-white/90 text-lg font-bold leading-tight tracking-[-0.015em] flex items-center gap-2">
+                                        <span
+                                            class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                                        <span>Fuente del Contenido</span>
+                                    </h2>
+                                    <div class="mt-4">
+                                        <div
+                                            class="flex w-full sm:w-80 h-10 items-center justify-center rounded-lg bg-[#f0f2f4] dark:bg-white/5 p-1">
+                                            <label
+                                                class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-black/20 has-[:checked]:shadow-[0_1px_4px_rgba(0,0,0,0.08)] has-[:checked]:text-[#111418] dark:has-[:checked]:text-white/90 text-[#617589] dark:text-white/60 text-sm font-medium leading-normal transition-colors">
+                                                <span class="truncate">Pegar Texto</span>
+                                                <input checked="" class="invisible w-0" name="source-type" type="radio"
+                                                    value="Pegar Texto" />
+                                            </label>
+                                            <label
+                                                class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-black/20 has-[:checked]:shadow-[0_1px_4px_rgba(0,0,0,0.08)] has-[:checked]:text-[#111418] dark:has-[:checked]:text-white/90 text-[#617589] dark:text-white/60 text-sm font-medium leading-normal transition-colors">
+                                                <span class="truncate">Subir Archivo</span>
+                                                <input class="invisible w-0" name="source-type" type="radio"
+                                                    value="Subir Archivo" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <label class="flex flex-col">
+                                            <p
+                                                class="text-[#111418] dark:text-white/90 text-base font-medium leading-normal pb-2">
+                                                Pega aquí tu texto (apuntes, artículo, etc.) <span
+                                                    class="text-error">*</span></p>
+                                            <textarea
+                                                class="form-input flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary focus:shadow-input-focus border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] min-h-60 placeholder:text-[#617589] p-4 text-base font-normal leading-normal shadow-input-subtle transition-all"
+                                                placeholder="Ej: La fotosíntesis es el proceso mediante el cual las plantas verdes, las algas y algunas bacterias convierten la energía luminosa en energía química..."></textarea>
+                                        </label>
+                                    </div>
+                                </section>
+                                <section
+                                    class="bg-white dark:bg-[#18232e] border border-gray-200/50 dark:border-white/10 rounded-xl p-6 shadow-subtle dark:shadow-none">
+                                    <h2
+                                        class="text-[#111418] dark:text-white/90 text-lg font-bold leading-tight tracking-[-0.015em] flex items-center gap-2">
+                                        <span
+                                            class="bg-gray-200 text-gray-700 dark:bg-white/10 dark:text-white/80 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold">3</span>
+                                        <span>Formato (Opcional)</span>
+                                    </h2>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                        <label class="flex flex-col md:col-span-2">
+                                            <p
+                                                class="text-[#111418] dark:text-white/90 text-base font-medium leading-normal pb-2">
+                                                Ejemplos de estilo de pregunta</p>
+                                            <textarea
+                                                class="form-input flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary focus:shadow-input-focus border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] min-h-24 placeholder:text-[#617589] p-4 text-base font-normal leading-normal shadow-input-subtle transition-all"
+                                                placeholder="Ej: 'Según el texto, ¿cuál es el principal producto de la fotosíntesis?'"></textarea>
+                                        </label>
+                                    </div>
+                                </section>
+                            </div>
+                            <aside class="lg:col-span-1 flex flex-col gap-6 lg:sticky lg:top-8">
+                                <section
+                                    class="bg-white dark:bg-[#18232e] border border-gray-200/50 dark:border-white/10 rounded-xl p-6 shadow-subtle dark:shadow-none">
+                                    <h2
+                                        class="text-[#111418] dark:text-white/90 text-lg font-bold leading-tight tracking-[-0.015em] flex items-center gap-2">
+                                        <span
+                                            class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold">2</span>
+                                        <span>Ajustes de Generación</span>
+                                    </h2>
+                                    <div class="flex flex-col gap-4 mt-4">
+                                        <label class="flex flex-col">
+                                            <p
+                                                class="text-[#111418] dark:text-white/90 text-base font-medium leading-normal pb-2">
+                                                Número de preguntas <span class="text-error">*</span></p>
+                                            <input
+                                                class="form-input w-full rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary focus:shadow-input-focus border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] p-3 text-base font-normal leading-normal shadow-input-subtle transition-all"
+                                                max="50" min="1" type="number" value="10" />
+                                        </label>
+                                        <label class="flex flex-col">
+                                            <span class="flex items-center gap-1.5 pb-2">
+                                                <p
+                                                    class="text-[#111418] dark:text-white/90 text-base font-medium leading-normal">
+                                                    Dificultad conceptual</p>
+                                                <span
+                                                    class="material-symbols-outlined text-base text-gray-400 cursor-help"
+                                                    title="Define la complejidad de los conceptos evaluados.">info</span>
+                                            </span>
+                                            <select
+                                                class="form-select w-full rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary focus:shadow-input-focus border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] p-3 text-base font-normal leading-normal shadow-input-subtle transition-all">
+                                                <option>Fácil</option>
+                                                <option selected="">Media</option>
+                                                <option>Difícil</option>
+                                            </select>
+                                        </label>
+                                        <label class="flex flex-col">
+                                            <span class="flex items-center gap-1.5 pb-2">
+                                                <p
+                                                    class="text-[#111418] dark:text-white/90 text-base font-medium leading-normal">
+                                                    Similitud de respuestas</p>
+                                                <span
+                                                    class="material-symbols-outlined text-base text-gray-400 cursor-help"
+                                                    title="Ajusta cuán parecidas serán las opciones incorrectas a la correcta.">info</span>
+                                            </span>
+                                            <select
+                                                class="form-select w-full rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary focus:shadow-input-focus border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] p-3 text-base font-normal leading-normal shadow-input-subtle transition-all">
+                                                <option>Baja</option>
+                                                <option selected="">Media</option>
+                                                <option>Alta</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </section>
+                                <div class="flex flex-col items-center gap-4">
+                                    <button
+                                        class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-10 rounded-xl text-lg transition-all duration-300 shadow-button-primary hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary/40 dark:focus:ring-offset-background-dark transform hover:-translate-y-0.5">
+                                        Generar preguntas
+                                    </button>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
