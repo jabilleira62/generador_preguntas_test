@@ -90,25 +90,35 @@
                                                 class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-black/20 has-[:checked]:shadow-[0_1px_4px_rgba(0,0,0,0.08)] has-[:checked]:text-[#111418] dark:has-[:checked]:text-white/90 text-[#617589] dark:text-white/60 text-sm font-medium leading-normal transition-colors">
                                                 <span class="truncate">Pegar Texto</span>
                                                 <input checked="" class="invisible w-0" name="source-type" type="radio"
-                                                    value="Pegar Texto" />
+                                                    value="text" onchange="toggleSource('text')" />
                                             </label>
                                             <label
                                                 class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-black/20 has-[:checked]:shadow-[0_1px_4px_rgba(0,0,0,0.08)] has-[:checked]:text-[#111418] dark:has-[:checked]:text-white/90 text-[#617589] dark:text-white/60 text-sm font-medium leading-normal transition-colors">
                                                 <span class="truncate">Subir Archivo</span>
                                                 <input class="invisible w-0" name="source-type" type="radio"
-                                                    value="Subir Archivo" />
+                                                    value="file" onchange="toggleSource('file')" />
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="mt-4">
+                                    <div class="mt-4" id="text-input-container">
                                         <label class="flex flex-col">
                                             <p
                                                 class="text-[#111418] dark:text-white/90 text-base font-medium leading-normal pb-2">
                                                 Pega aquí tu texto (apuntes, artículo, etc.) <span
                                                     class="text-error">*</span></p>
-                                            <textarea
+                                            <textarea id="content-text"
                                                 class="form-input flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary focus:shadow-input-focus border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] min-h-60 placeholder:text-[#617589] p-4 text-base font-normal leading-normal shadow-input-subtle transition-all"
                                                 placeholder="Ej: La fotosíntesis es el proceso mediante el cual las plantas verdes, las algas y algunas bacterias convierten la energía luminosa en energía química..."></textarea>
+                                        </label>
+                                    </div>
+                                    <div class="mt-4 hidden" id="file-input-container">
+                                        <label class="flex flex-col">
+                                            <p
+                                                class="text-[#111418] dark:text-white/90 text-base font-medium leading-normal pb-2">
+                                                Sube tu archivo (PDF, DOCX, TXT - Máx 10MB) <span
+                                                    class="text-error">*</span></p>
+                                            <input type="file" id="content-file" accept=".pdf,.docx,.txt"
+                                                class="form-input w-full rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] p-3 text-base shadow-input-subtle" />
                                         </label>
                                     </div>
                                 </section>
@@ -125,7 +135,7 @@
                                             <p
                                                 class="text-[#111418] dark:text-white/90 text-base font-medium leading-normal pb-2">
                                                 Ejemplos de estilo de pregunta</p>
-                                            <textarea
+                                            <textarea id="examples-text"
                                                 class="form-input flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary focus:shadow-input-focus border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] min-h-24 placeholder:text-[#617589] p-4 text-base font-normal leading-normal shadow-input-subtle transition-all"
                                                 placeholder="Ej: 'Según el texto, ¿cuál es el principal producto de la fotosíntesis?'"></textarea>
                                         </label>
@@ -145,8 +155,18 @@
                                         <label class="flex flex-col">
                                             <p
                                                 class="text-[#111418] dark:text-white/90 text-base font-medium leading-normal pb-2">
+                                                Modelo de IA <span class="text-error">*</span></p>
+                                            <select id="ai-provider"
+                                                class="form-select w-full rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] p-3 text-base shadow-input-subtle">
+                                                <option value="gemini">Google Gemini</option>
+                                                <option value="chatgpt">ChatGPT (OpenAI)</option>
+                                            </select>
+                                        </label>
+                                        <label class="flex flex-col">
+                                            <p
+                                                class="text-[#111418] dark:text-white/90 text-base font-medium leading-normal pb-2">
                                                 Número de preguntas <span class="text-error">*</span></p>
-                                            <input
+                                            <input id="question-count"
                                                 class="form-input w-full rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary focus:shadow-input-focus border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] p-3 text-base font-normal leading-normal shadow-input-subtle transition-all"
                                                 max="50" min="1" type="number" value="10" />
                                         </label>
@@ -159,11 +179,11 @@
                                                     class="material-symbols-outlined text-base text-gray-400 cursor-help"
                                                     title="Define la complejidad de los conceptos evaluados.">info</span>
                                             </span>
-                                            <select
+                                            <select id="difficulty"
                                                 class="form-select w-full rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary focus:shadow-input-focus border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] p-3 text-base font-normal leading-normal shadow-input-subtle transition-all">
-                                                <option>Fácil</option>
-                                                <option selected="">Media</option>
-                                                <option>Difícil</option>
+                                                <option value="Fácil">Fácil</option>
+                                                <option value="Media" selected="">Media</option>
+                                                <option value="Difícil">Difícil</option>
                                             </select>
                                         </label>
                                         <label class="flex flex-col">
@@ -175,19 +195,21 @@
                                                     class="material-symbols-outlined text-base text-gray-400 cursor-help"
                                                     title="Ajusta cuán parecidas serán las opciones incorrectas a la correcta.">info</span>
                                             </span>
-                                            <select
+                                            <select id="similarity"
                                                 class="form-select w-full rounded-lg text-[#111418] dark:text-white/90 focus:outline-none focus:ring-0 focus:border-primary focus:shadow-input-focus border-gray-300 dark:border-white/20 bg-white dark:bg-[#101922] p-3 text-base font-normal leading-normal shadow-input-subtle transition-all">
-                                                <option>Baja</option>
-                                                <option selected="">Media</option>
-                                                <option>Alta</option>
+                                                <option value="Baja">Baja</option>
+                                                <option value="Media" selected="">Media</option>
+                                                <option value="Alta">Alta</option>
                                             </select>
                                         </label>
                                     </div>
                                 </section>
                                 <div class="flex flex-col items-center gap-4">
-                                    <button
-                                        class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-10 rounded-xl text-lg transition-all duration-300 shadow-button-primary hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary/40 dark:focus:ring-offset-background-dark transform hover:-translate-y-0.5">
-                                        Generar preguntas
+                                    <button id="generate-btn" onclick="handleGenerate()"
+                                        class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-10 rounded-xl text-lg transition-all duration-300 shadow-button-primary hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary/40 dark:focus:ring-offset-background-dark transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                                        <span id="btn-text">Generar preguntas</span>
+                                        <span id="btn-loader"
+                                            class="hidden material-symbols-outlined animate-spin text-xl">progress_activity</span>
                                     </button>
                                 </div>
                             </aside>
@@ -197,6 +219,84 @@
             </main>
         </div>
     </div>
+
+    <script>
+        let currentSource = 'text';
+
+        function toggleSource(source) {
+            currentSource = source;
+            const textContainer = document.getElementById('text-input-container');
+            const fileContainer = document.getElementById('file-input-container');
+
+            if (source === 'text') {
+                textContainer.classList.remove('hidden');
+                fileContainer.classList.add('hidden');
+            } else {
+                textContainer.classList.add('hidden');
+                fileContainer.classList.remove('hidden');
+            }
+        }
+
+        async function handleGenerate() {
+            const btn = document.getElementById('generate-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnLoader = document.getElementById('btn-loader');
+
+            const count = document.getElementById('question-count').value;
+            const difficulty = document.getElementById('difficulty').value;
+            const similarity = document.getElementById('similarity').value;
+            const provider = document.getElementById('ai-provider').value;
+            const examples = document.getElementById('examples-text').value;
+
+            const formData = new FormData();
+            formData.append('count', count);
+            formData.append('difficulty', difficulty);
+            formData.append('similarity', similarity);
+            formData.append('provider', provider);
+            formData.append('examples', examples);
+
+            if (currentSource === 'text') {
+                const text = document.getElementById('content-text').value;
+                if (!text) return alert('Por favor ingresa el texto de contenido');
+                formData.append('text', text);
+            } else {
+                const fileInput = document.getElementById('content-file');
+                if (!fileInput.files.length) return alert('Por favor selecciona un archivo');
+                formData.append('file', fileInput.files[0]);
+            }
+
+            // UI Loading State
+            btn.disabled = true;
+            btnText.textContent = 'Generando...';
+            btnLoader.classList.remove('hidden');
+
+            try {
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error || 'Error en la generación');
+                }
+
+                const data = await response.json();
+
+                // Save to localStorage
+                localStorage.setItem('generatedQuestions', JSON.stringify(data.questions));
+
+                // Redirect
+                window.location.href = '/results';
+
+            } catch (error) {
+                alert('Error: ' + error.message);
+                btn.disabled = false;
+                btnText.textContent = 'Generar preguntas';
+                btnLoader.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 
 </html>

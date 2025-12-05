@@ -77,247 +77,264 @@
                             Revisa, edita y exporta las preguntas generadas por la IA.</p>
                     </div>
                     <div class="flex gap-3">
-                        <button
+                        <button id="btn-back"
                             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-content-light dark:bg-content-dark border border-border-light dark:border-border-dark text-secondary text-sm font-medium leading-normal tracking-tight shadow-subtle hover:bg-background-light dark:hover:bg-background-dark transition-colors">
                             <span class="truncate">Volver a configuración</span>
                         </button>
-                        <button
+                        <button id="btn-export"
                             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-accent text-slate-800 text-sm font-medium leading-normal tracking-tight shadow-lg shadow-yellow-500/10 hover:bg-accent-darker transition-colors">
                             <span class="truncate">Exportar a Markdown</span>
                         </button>
                     </div>
                 </div>
-                <div class="flex flex-col gap-6">
-                    <div
-                        class="flex flex-col gap-4 bg-content-light dark:bg-content-dark p-6 rounded-xl border border-border-light dark:border-border-dark shadow-md">
-                        <div class="flex items-start justify-between">
-                            <div class="flex-1">
-                                <p
-                                    class="text-text-light-primary dark:text-text-dark-primary text-base font-medium leading-normal">
-                                    1. ¿Cuál es la capital de Francia?</p>
-                                <p
-                                    class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal">
-                                    Revisa el enunciado y las opciones. Marca la respuesta correcta.</p>
-                            </div>
-                            <div class="flex items-center gap-1">
-                                <button
-                                    class="flex items-center justify-center size-8 rounded-full hover:bg-primary-bg-hover dark:hover:bg-primary/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
-                                    <span class="material-symbols-outlined text-xl">edit</span>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center size-8 rounded-full hover:bg-primary-bg-hover dark:hover:bg-primary/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
-                                    <span class="material-symbols-outlined text-xl">autorenew</span>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center size-8 rounded-full hover:bg-red-500/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-red-500 dark:hover:text-red-500 transition-colors">
-                                    <span class="material-symbols-outlined text-xl">delete</span>
-                                </button>
-                            </div>
+                <div class="flex flex-col gap-6" id="questions-container">
+                    <!-- Dynamic content will be injected here -->
+                </div>
+                <div
+                    class="flex flex-col gap-4 bg-content-light dark:bg-content-dark p-6 rounded-xl border-2 border-primary shadow-lg-blue">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <p
+                                class="text-text-light-primary dark:text-text-dark-primary text-base font-medium leading-normal">
+                                2. ¿Quién escribió "Don Quijote de la Mancha"?</p>
+                            <p
+                                class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal">
+                                Modo de edición activado.</p>
                         </div>
-                        <div class="flex flex-col gap-3"
-                            style="--radio-dot-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(59,130,246)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273%27/%3e%3c/svg%3e');">
-                            <label
-                                class="flex items-center gap-4 rounded-lg border-2 border-solid border-primary bg-primary/5 p-[14px] cursor-pointer">
-                                <input checked=""
-                                    class="h-5 w-5 border-2 border-primary bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
-                                    name="question-1" type="radio" />
-                                <div class="flex grow flex-col">
-                                    <p
-                                        class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
-                                        París</p>
-                                </div>
-                            </label>
-                            <label
-                                class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-[15px] cursor-pointer hover:border-primary/50">
-                                <input
-                                    class="h-5 w-5 border-2 border-border-light dark:border-border-dark bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
-                                    name="question-1" type="radio" />
-                                <div class="flex grow flex-col">
-                                    <p
-                                        class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
-                                        Londres</p>
-                                </div>
-                            </label>
-                            <label
-                                class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-[15px] cursor-pointer hover:border-primary/50">
-                                <input
-                                    class="h-5 w-5 border-2 border-border-light dark:border-border-dark bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
-                                    name="question-1" type="radio" />
-                                <div class="flex grow flex-col">
-                                    <p
-                                        class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
-                                        Berlín</p>
-                                </div>
-                            </label>
-                            <label
-                                class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-[15px] cursor-pointer hover:border-primary/50">
-                                <input
-                                    class="h-5 w-5 border-2 border-border-light dark:border-border-dark bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
-                                    name="question-1" type="radio" />
-                                <div class="flex grow flex-col">
-                                    <p
-                                        class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
-                                        Madrid</p>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                    <div
-                        class="flex flex-col gap-4 bg-content-light dark:bg-content-dark p-6 rounded-xl border-2 border-primary shadow-lg-blue">
-                        <div class="flex items-start justify-between">
-                            <div class="flex-1">
-                                <p
-                                    class="text-text-light-primary dark:text-text-dark-primary text-base font-medium leading-normal">
-                                    2. ¿Quién escribió "Don Quijote de la Mancha"?</p>
-                                <p
-                                    class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal">
-                                    Modo de edición activado.</p>
-                            </div>
-                            <div class="flex items-center gap-1">
-                                <button
-                                    class="flex items-center justify-center size-8 rounded-full hover:bg-primary-bg-hover dark:hover:bg-primary/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
-                                    <span class="material-symbols-outlined text-xl">edit</span>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center size-8 rounded-full hover:bg-primary-bg-hover dark:hover:bg-primary/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
-                                    <span class="material-symbols-outlined text-xl">autorenew</span>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center size-8 rounded-full hover:bg-red-500/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-red-500 dark:hover:text-red-500 transition-colors">
-                                    <span class="material-symbols-outlined text-xl">delete</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-3"
-                            style="--radio-dot-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(59,130,246)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273%27/%3e%3c/svg%3e');">
-                            <label
-                                class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-2 pl-4 cursor-pointer hover:border-primary/50 focus-within:ring-2 focus-within:ring-primary focus-within:border-primary">
-                                <input
-                                    class="h-5 w-5 border-2 border-border-light dark:border-border-dark bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
-                                    name="question-2" type="radio" />
-                                <input
-                                    class="w-full bg-transparent border-0 text-sm font-medium text-text-light-primary dark:text-text-dark-primary focus:ring-0"
-                                    type="text" value="Federico García Lorca" />
-                            </label>
-                            <label
-                                class="flex items-center gap-4 rounded-lg border-2 border-solid border-primary bg-primary/5 p-[7px] pl-4 cursor-pointer">
-                                <input checked=""
-                                    class="h-5 w-5 border-2 border-primary bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
-                                    name="question-2" type="radio" />
-                                <input
-                                    class="w-full bg-transparent border-0 text-sm font-medium text-text-light-primary dark:text-text-dark-primary focus:ring-0"
-                                    type="text" value="Miguel de Cervantes" />
-                            </label>
-                            <label
-                                class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-2 pl-4 cursor-pointer hover:border-primary/50 focus-within:ring-2 focus-within:ring-primary focus-within:border-primary">
-                                <input
-                                    class="h-5 w-5 border-2 border-border-light dark:border-border-dark bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
-                                    name="question-2" type="radio" />
-                                <input
-                                    class="w-full bg-transparent border-0 text-sm font-medium text-text-light-primary dark:text-text-dark-primary focus:ring-0"
-                                    type="text" value="Gabriel García Márquez" />
-                            </label>
-                            <label
-                                class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-2 pl-4 cursor-pointer hover:border-primary/50 focus-within:ring-2 focus-within:ring-primary focus-within:border-primary">
-                                <input
-                                    class="h-5 w-5 border-2 border-border-light dark:border-border-dark bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
-                                    name="question-2" type="radio" />
-                                <input
-                                    class="w-full bg-transparent border-0 text-sm font-medium text-text-light-primary dark:text-text-dark-primary focus:ring-0"
-                                    type="text" value="Pablo Neruda" />
-                            </label>
-                        </div>
-                        <div class="flex justify-end gap-3 mt-2">
+                        <div class="flex items-center gap-1">
                             <button
-                                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-content-light dark:bg-content-dark border border-border-light dark:border-border-dark text-secondary text-sm font-medium leading-normal tracking-tight shadow-subtle hover:bg-background-light dark:hover:bg-background-dark transition-colors">
-                                <span class="truncate">Cancelar</span>
+                                class="flex items-center justify-center size-8 rounded-full hover:bg-primary-bg-hover dark:hover:bg-primary/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-xl">edit</span>
                             </button>
                             <button
-                                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-primary text-white text-sm font-medium leading-normal tracking-tight shadow-lg shadow-blue-500/10 hover:bg-primary-darker transition-colors">
-                                <span class="truncate">Guardar Cambios</span>
+                                class="flex items-center justify-center size-8 rounded-full hover:bg-primary-bg-hover dark:hover:bg-primary/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-xl">autorenew</span>
+                            </button>
+                            <button
+                                class="flex items-center justify-center size-8 rounded-full hover:bg-red-500/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-red-500 dark:hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-xl">delete</span>
                             </button>
                         </div>
                     </div>
+                    <div class="flex flex-col gap-3"
+                        style="--radio-dot-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(59,130,246)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273%27/%3e%3c/svg%3e');">
+                        <label
+                            class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-2 pl-4 cursor-pointer hover:border-primary/50 focus-within:ring-2 focus-within:ring-primary focus-within:border-primary">
+                            <input
+                                class="h-5 w-5 border-2 border-border-light dark:border-border-dark bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
+                                name="question-2" type="radio" />
+                            <input
+                                class="w-full bg-transparent border-0 text-sm font-medium text-text-light-primary dark:text-text-dark-primary focus:ring-0"
+                                type="text" value="Federico García Lorca" />
+                        </label>
+                        <label
+                            class="flex items-center gap-4 rounded-lg border-2 border-solid border-primary bg-primary/5 p-[7px] pl-4 cursor-pointer">
+                            <input checked=""
+                                class="h-5 w-5 border-2 border-primary bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
+                                name="question-2" type="radio" />
+                            <input
+                                class="w-full bg-transparent border-0 text-sm font-medium text-text-light-primary dark:text-text-dark-primary focus:ring-0"
+                                type="text" value="Miguel de Cervantes" />
+                        </label>
+                        <label
+                            class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-2 pl-4 cursor-pointer hover:border-primary/50 focus-within:ring-2 focus-within:ring-primary focus-within:border-primary">
+                            <input
+                                class="h-5 w-5 border-2 border-border-light dark:border-border-dark bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
+                                name="question-2" type="radio" />
+                            <input
+                                class="w-full bg-transparent border-0 text-sm font-medium text-text-light-primary dark:text-text-dark-primary focus:ring-0"
+                                type="text" value="Gabriel García Márquez" />
+                        </label>
+                        <label
+                            class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-2 pl-4 cursor-pointer hover:border-primary/50 focus-within:ring-2 focus-within:ring-primary focus-within:border-primary">
+                            <input
+                                class="h-5 w-5 border-2 border-border-light dark:border-border-dark bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0"
+                                name="question-2" type="radio" />
+                            <input
+                                class="w-full bg-transparent border-0 text-sm font-medium text-text-light-primary dark:text-text-dark-primary focus:ring-0"
+                                type="text" value="Pablo Neruda" />
+                        </label>
+                    </div>
+                    <div class="flex justify-end gap-3 mt-2">
+                        <button
+                            class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-content-light dark:bg-content-dark border border-border-light dark:border-border-dark text-secondary text-sm font-medium leading-normal tracking-tight shadow-subtle hover:bg-background-light dark:hover:bg-background-dark transition-colors">
+                            <span class="truncate">Cancelar</span>
+                        </button>
+                        <button
+                            class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-primary text-white text-sm font-medium leading-normal tracking-tight shadow-lg shadow-blue-500/10 hover:bg-primary-darker transition-colors">
+                            <span class="truncate">Guardar Cambios</span>
+                        </button>
+                    </div>
+                </div>
+                <div
+                    class="relative flex flex-col gap-4 bg-content-light dark:bg-content-dark p-6 rounded-xl border border-border-light dark:border-border-dark shadow-md">
                     <div
-                        class="relative flex flex-col gap-4 bg-content-light dark:bg-content-dark p-6 rounded-xl border border-border-light dark:border-border-dark shadow-md">
-                        <div
-                            class="absolute inset-0 bg-background-light/70 dark:bg-background-dark/70 rounded-xl flex items-center justify-center">
-                            <div class="flex items-center gap-2 text-primary">
-                                <svg class="animate-spin h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                        stroke-width="4"></circle>
-                                    <path class="opacity-75"
-                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                        fill="currentColor"></path>
-                                </svg>
-                                <span class="font-medium text-sm">Regenerando...</span>
-                            </div>
+                        class="absolute inset-0 bg-background-light/70 dark:bg-background-dark/70 rounded-xl flex items-center justify-center">
+                        <div class="flex items-center gap-2 text-primary">
+                            <svg class="animate-spin h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path class="opacity-75"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <span class="font-medium text-sm">Regenerando...</span>
                         </div>
-                        <div class="flex items-start justify-between">
-                            <div class="flex-1">
+                    </div>
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <p
+                                class="text-text-light-primary dark:text-text-dark-primary text-base font-medium leading-normal">
+                                3. ¿En qué año llegó el hombre a la luna?</p>
+                            <p
+                                class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal">
+                                Regenerando con IA. Espere un momento.</p>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <button
+                                class="flex items-center justify-center size-8 rounded-full hover:bg-primary-bg-hover dark:hover:bg-primary/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-xl">edit</span>
+                            </button>
+                            <button
+                                class="flex items-center justify-center size-8 rounded-full hover:bg-primary-bg-hover dark:hover:bg-primary/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-xl">autorenew</span>
+                            </button>
+                            <button
+                                class="flex items-center justify-center size-8 rounded-full hover:bg-red-500/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-red-500 dark:hover:text-red-500 transition-colors">
+                                <span class="material-symbols-outlined text-xl">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3"
+                        style="--radio-dot-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(59,130,246)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273%27/%3e%3c/svg%3e');">
+                        <label
+                            class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-[15px]">
+                            <div class="flex grow flex-col">
                                 <p
-                                    class="text-text-light-primary dark:text-text-dark-primary text-base font-medium leading-normal">
-                                    3. ¿En qué año llegó el hombre a la luna?</p>
+                                    class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
+                                    1965</p>
+                            </div>
+                        </label>
+                        <label
+                            class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-[15px]">
+                            <div class="flex grow flex-col">
                                 <p
-                                    class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal">
-                                    Regenerando con IA. Espere un momento.</p>
+                                    class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
+                                    1972</p>
                             </div>
-                            <div class="flex items-center gap-1">
-                                <button
-                                    class="flex items-center justify-center size-8 rounded-full hover:bg-primary-bg-hover dark:hover:bg-primary/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
-                                    <span class="material-symbols-outlined text-xl">edit</span>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center size-8 rounded-full hover:bg-primary-bg-hover dark:hover:bg-primary/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
-                                    <span class="material-symbols-outlined text-xl">autorenew</span>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center size-8 rounded-full hover:bg-red-500/10 text-text-light-secondary dark:text-text-dark-secondary hover:text-red-500 dark:hover:text-red-500 transition-colors">
-                                    <span class="material-symbols-outlined text-xl">delete</span>
-                                </button>
+                        </label>
+                        <label
+                            class="flex items-center gap-4 rounded-lg border-2 border-solid border-primary bg-primary/5 p-[14px]">
+                            <div class="flex grow flex-col">
+                                <p
+                                    class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
+                                    1969</p>
                             </div>
-                        </div>
-                        <div class="flex flex-col gap-3"
-                            style="--radio-dot-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(59,130,246)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273%27/%3e%3c/svg%3e');">
-                            <label
-                                class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-[15px]">
-                                <div class="flex grow flex-col">
-                                    <p
-                                        class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
-                                        1965</p>
-                                </div>
-                            </label>
-                            <label
-                                class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-[15px]">
-                                <div class="flex grow flex-col">
-                                    <p
-                                        class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
-                                        1972</p>
-                                </div>
-                            </label>
-                            <label
-                                class="flex items-center gap-4 rounded-lg border-2 border-solid border-primary bg-primary/5 p-[14px]">
-                                <div class="flex grow flex-col">
-                                    <p
-                                        class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
-                                        1969</p>
-                                </div>
-                            </label>
-                            <label
-                                class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-[15px]">
-                                <div class="flex grow flex-col">
-                                    <p
-                                        class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
-                                        1980</p>
-                                </div>
-                            </label>
-                        </div>
+                        </label>
+                        <label
+                            class="flex items-center gap-4 rounded-lg border border-solid border-border-light dark:border-border-dark p-[15px]">
+                            <div class="flex grow flex-col">
+                                <p
+                                    class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal">
+                                    1980</p>
+                            </div>
+                        </label>
                     </div>
                 </div>
             </div>
-        </main>
     </div>
+    </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = localStorage.getItem('generatedQuestions');
+            if (!data) {
+                // No data, redirect back
+                window.location.href = '/';
+                return;
+            }
+
+            const questions = JSON.parse(data);
+            renderQuestions(questions);
+
+            document.getElementById('btn-back').addEventListener('click', () => {
+                window.location.href = '/';
+            });
+
+            document.getElementById('btn-export').addEventListener('click', () => {
+                exportToMarkdown(questions);
+            });
+        });
+
+        function renderQuestions(questions) {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = ''; // Clear demo content
+
+            questions.forEach((q, index) => {
+                const questionNum = index + 1;
+                const html = `
+                    <div class="flex flex-col gap-4 bg-content-light dark:bg-content-dark p-6 rounded-xl border border-border-light dark:border-border-dark shadow-md" id="q-${questionNum}">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <p class="text-text-light-primary dark:text-text-dark-primary text-base font-medium leading-normal" contenteditable="true">
+                                    ${questionNum}. ${q.question}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="flex items-center gap-4 rounded-lg border-2 border-solid ${optIndex === q.correctAnswer ? 'border-primary bg-primary/5' : 'border-border-light dark:border-border-dark'} p-[14px] cursor-pointer">
+                                    <input ${optIndex === q.correctAnswer ? 'checked' : ''} disabled
+                                        class="h-5 w-5 border-2 border-primary bg-transparent text-transparent checked:border-primary focus:outline-none focus:ring-0 focus:ring-offset-0"
+                                        name="question-${questionNum}" type="radio" />
+                                    <div class="flex grow flex-col">
+                                        <p class="text-text-light-primary dark:text-text-dark-primary text-sm font-medium leading-normal" contenteditable="true">
+                                            ${opt}
+                                        </p>
+                                    </div>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        function exportToMarkdown(questions) {
+            let mdContent = "# Exam Questions\n\n";
+
+            // Re-read content from DOM in case of edits
+            const renderedQuestions = document.querySelectorAll('[id^="q-"]');
+
+            renderedQuestions.forEach((el, index) => {
+                const qText = el.querySelector('p[contenteditable]').innerText.trim();
+                mdContent += `### ${qText}\n\n`;
+
+                const options = el.querySelectorAll('label p[contenteditable]');
+                const radioButtons = el.querySelectorAll('input[type="radio"]');
+
+                options.forEach((opt, i) => {
+                    const isCorrect = radioButtons[i].checked;
+                    const letter = String.fromCharCode(97 + i); // a, b, c, d...
+                    mdContent += `${letter}) ${opt.innerText.trim()} ${isCorrect ? '**(Correct)**' : ''}\n`;
+                });
+
+                mdContent += "\n---\n\n";
+            });
+
+            const blob = new Blob([mdContent], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `preguntas_test_${new Date().toISOString().slice(0, 10)}.md`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
 </body>
 
 </html>
